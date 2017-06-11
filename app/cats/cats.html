@@ -1,0 +1,6 @@
+<div ng-controller='CatsCtrl'>
+  <button ng-click='getGif()'> Click Me for Cat Gifs </button>
+  <div>
+    <img ng-if='catGifUrl' ng-src={{catGifUrl}} alt='Cat gif'/>
+  </div>
+</div>
