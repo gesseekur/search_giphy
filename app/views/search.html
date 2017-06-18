@@ -1,0 +1,25 @@
+<div ng-controller='SearchCtrl'>
+<!-- search for gifs -->
+  <div class='md-padding' layout='column' layout-align='center center'>
+    <span class='md-display-3'> Search Me </span>
+    <div layout='row'>
+      <i class="fa fa-search search-icon" aria-hidden="true"></i>
+      <input type='search' ng-model-options="{ debounce: 300 }" ng-change='search()' ng-model='searchedItem' placeholder='...'>
+    </div>
+  </div>
+
+<!--  loading spinner while searching for gifs-->
+  <div layout='row' layout-align='center'>
+    <md-progress-circular ng-if='giphys.length == 0' md-mode="indeterminate" md-diameter='50'></md-progress-circular>
+  </div>
+
+
+<!--  displays the gifs -->
+  <md-grid-list layout-fill md-cols-xs="2" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="8" md-row-height="110px">
+    <md-grid-tile ng-repeat='gif in giphys' ng-if='giphys.length > 0'>
+      <div layout='row'>
+        <img class='pointer' ng-click='showEnlargedGif(gif.images.downsized_large.url)' height='100' width='100' src="{{gif.images.fixed_width_small.url}}" alt='gif'/>
+      </div>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
